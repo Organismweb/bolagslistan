@@ -1,7 +1,4 @@
-import React, { Component } from 'react';
-
-// Destructuring example
-const { Fragment } = React;
+import React, { Component, Fragment } from 'react';
 
 export default class App extends Component {
   // State using Class properties transform
