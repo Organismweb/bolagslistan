@@ -1,6 +1,13 @@
-import React, { Component, Fragment } from 'react';
+// @flow
 
-export default class App extends Component {
+import React, { Component, Fragment } from 'react';
+import './components/_settings/baseStyles';
+
+type State = {
+  text: string,
+};
+
+export default class App extends Component<void, State> {
   // State using Class properties transform
   state = {
     text: 'Hej',

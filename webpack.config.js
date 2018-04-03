@@ -6,17 +6,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './client/index.html',
-  filename: './client/index.html',
+  filename: 'index.html',
   inject: 'body',
 });
 
 module.exports = {
+  mode: 'development',
   entry: './client/index.js',
   output: {
     path: path.resolve('dist'),
     filename: 'index_bundle.js',
   },
-  mode: 'development',
   module: {
     rules: [
       {
