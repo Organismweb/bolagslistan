@@ -15,6 +15,7 @@
   "plugins": [
     "react-hot-loader/babel",
     "transform-class-properties",
-    "babel-plugin-styled-components"
+    "babel-plugin-styled-components",
+    "transform-flow-comments"
   ]
 }

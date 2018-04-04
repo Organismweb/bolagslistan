@@ -10,7 +10,7 @@ type State = {
 class App extends Component<void, State> {
   // State using Class properties transform
   state = {
-    text: 'xx',
+    text: 'asasdsadd',
   };
   // How to write functions to get correct scope of this.
   exampleFunction = () => <div>{this.state.text}</div>;
