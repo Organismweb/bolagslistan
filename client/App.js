@@ -1,16 +1,16 @@
 // @flow
-
 import React, { Component, Fragment } from 'react';
+import { hot } from 'react-hot-loader';
 import './components/_settings/baseStyles';
 
 type State = {
   text: string,
 };
 
-export default class App extends Component<void, State> {
+class App extends Component<void, State> {
   // State using Class properties transform
   state = {
-    text: 'Hej',
+    text: 'xx',
   };
   // How to write functions to get correct scope of this.
   exampleFunction = () => <div>{this.state.text}</div>;
@@ -18,3 +18,5 @@ export default class App extends Component<void, State> {
     return <Fragment>{this.exampleFunction()}</Fragment>;
   }
 }
+
+export default App;
