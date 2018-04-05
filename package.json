@@ -20,7 +20,9 @@
     "testEnvironmentOptions": {
       "enzymeAdapter": "react16"
     },
-    "collectCoverageFrom": ["client/**/*.{js,jsx}"]
+    "collectCoverageFrom": [
+      "client/**/*.{js,jsx}"
+    ]
   },
   "dependencies": {
     "path": "^0.12.7",

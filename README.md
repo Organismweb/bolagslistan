@@ -1,5 +1,10 @@
 # Bolagslistan V3
 
+### Todo
+
+* [ ] Add a simple example of a component using flow.
+* [ ] Add a proper prettier integration with eslint.
+
 ## Flow
 
 Flow is a static type checker for your JavaScript code. It does a lot of work to make you more productive.
@@ -13,10 +18,6 @@ In this project the following flow commands are avaiable:
 * `yarn flow:coverage`
 
 For more information about flow visit the website: https://flow.org/
-
-### Todo Flow
-
-* [ ] Add a simple example of a component using flow.
 
 ## Testing
 
@@ -52,3 +53,12 @@ For example:
 * Jest: https://facebook.github.io/jest/docs/en/api.html
 * Enzyme: http://airbnb.io/enzyme/docs/api/
 * Testing Styled Components: https://github.com/styled-components/jest-styled-components
+
+## VS Code
+
+If your are using VS Code, the following plugins will be necessary.
+
+* [Flow Language Support](https://marketplace.visualstudio.com/items?itemName=flowtype.flow-for-vscode)
+* [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+* [Babel ES6/ES7](https://marketplace.visualstudio.com/items?itemName=dzannotti.vscode-babel-coloring)
+* [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
