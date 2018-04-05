@@ -1,9 +1,27 @@
 # Bolagslistan V3
 
+## Flow
+
+Flow is a static type checker for your JavaScript code. It does a lot of work to make you more productive.
+Making you code faster, smarter, more confidently, and to a bigger scale.
+
+In this project the following flow commands are avaiable:
+
+* `yarn flow`
+* `yarn flow:stop`
+* `yarn flow:status`
+* `yarn flow:coverage`
+
+For more information about flow visit the website: https://flow.org/
+
+### Todo Flow
+
+* [ ] Add a simple example of a component using flow.
+
 ## Testing
 
 This app is using Jest & Enzyme for react testing.
-Use the following yarn/npm tasks to run tests:
+Use the following yarn/npm commands to run tests:
 
 * `yarn test`
 * `yarn test:watch`
