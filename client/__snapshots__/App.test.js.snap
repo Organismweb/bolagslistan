@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`app component renders without exploding 1`] = `
+<React.Fragment>
+  <div>
+    asasdsadd
+  </div>
+</React.Fragment>
+`;
