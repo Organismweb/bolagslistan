@@ -1,7 +1,7 @@
 // @flow
 import React, { Component, Fragment } from 'react';
 import { hot } from 'react-hot-loader';
-import './components/_settings/baseStyles';
+import './components/_settings/_base';
 
 type State = {
   text: string,
