@@ -1,15 +1,15 @@
 // @flow
-import React, { Component, Fragment } from "react";
-import "./components/_settings/_base";
+import React, { Component, Fragment } from 'react';
+import './components/_settings/_base';
 
 type State = {
-  text: string
+  text: string,
 };
 
 class App extends Component<void, State> {
   // State using Class properties transform
   state = {
-    text: "asasdsadd"
+    text: 'asasdsadd',
   };
   // How to write functions to get correct scope of this.
   exampleFunction = () => <div>{this.state.text}</div>;

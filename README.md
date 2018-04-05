@@ -2,8 +2,9 @@
 
 ### Todo
 
-* [ ] Add a simple example of a component using flow.
-* [ ] Add a proper prettier integration with eslint.
+* [ ] Add a simple example of a component using Flow.
+* [x] Add a proper prettier integration with ESLint.
+* [ ] Add a simple test example for a component and for a styled component.
 
 ## Flow
 
@@ -50,9 +51,9 @@ For example:
 
 ### Documentation on testing libs:
 
-* Jest: https://facebook.github.io/jest/docs/en/api.html
-* Enzyme: http://airbnb.io/enzyme/docs/api/
-* Testing Styled Components: https://github.com/styled-components/jest-styled-components
+* [Jest](https://facebook.github.io/jest/docs/en/api.html)
+* [Enzyme](http://airbnb.io/enzyme/docs/api/)
+* [Testing Styled Components](https://github.com/styled-components/jest-styled-components)
 
 ## VS Code
 
