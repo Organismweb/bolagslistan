@@ -55,6 +55,14 @@ For example:
 * [Enzyme](http://airbnb.io/enzyme/docs/api/)
 * [Testing Styled Components](https://github.com/styled-components/jest-styled-components)
 
+## Prettier
+Prettier is currently setup with the following packages:
+* https://github.com/prettier/eslint-plugin-prettier
+* https://github.com/prettier/eslint-config-prettier
+
+Basically it turns of ESLint rules relating to formatting and allows Prettier to format the code instead.
+It also reports formatting errors as ESLint issues.
+
 ## VS Code
 
 If your are using VS Code, the following plugins will be necessary.
