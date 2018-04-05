@@ -1,6 +1,5 @@
 {
-  "extends": ["airbnb", "prettier/react"],
-  "plugins": ["prettier"],
+  "extends": ["airbnb", "react", "jest-enzyme"],
   "parser": "babel-eslint",
   "rules": {
     "linebreak-style": 0,
@@ -12,20 +11,12 @@
         "allowTernary": true,
         "allowTaggedTemplates": true
       }
-    ],
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true,
-        "trailingComma": "es5",
-        "tabWidth": 2,
-        "semi": true,
-        "printWidth": 100,
-        "bracketSpacing": true
-      }
     ]
   },
   "env": {
-    "browser": true
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
   }
 }
