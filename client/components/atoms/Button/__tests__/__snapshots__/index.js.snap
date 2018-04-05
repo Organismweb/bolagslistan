@@ -20,6 +20,10 @@ exports[`tomato button renders 1`] = `
   color: tomato;
 }
 
+.c0:hover {
+  color: red;
+}
+
 <button
   className="c0"
 />

@@ -13,4 +13,7 @@ test('tomato button renders', () => {
   const tree = renderer.create(<TomatoButton />).toJSON();
   expect(tree).toMatchSnapshot();
   expect(tree).toHaveStyleRule('color', 'tomato');
+  expect(tree).toHaveStyleRule('color', 'red', {
+    modifier: ':hover',
+  });
 });

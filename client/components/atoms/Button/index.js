@@ -8,4 +8,7 @@ export const Button = styled.button`
 
 export const TomatoButton = Button.extend`
   color: tomato;
+  &:hover {
+    color: red;
+  }
 `;
