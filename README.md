@@ -23,10 +23,10 @@ If you are creating a new component put the unit tests in a `__tests__` folder.
 For example:
 
 ```
-- MyComponentFolder
-  - MyComponent.js
+- MyAmazingComponent
+  - index.js
   - __tests__
-    - myTest.js
+    - index.js
 ```
 
 ### Documentation on testing libs:
