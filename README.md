@@ -33,7 +33,4 @@ For example:
 
 Jest: https://facebook.github.io/jest/docs/en/api.html
 Enzyme: http://airbnb.io/enzyme/docs/api/
-
-* Testing Styled Components:
-  * https://github.com/styled-components/jest-styled-components
-  *
+Testing Styled Components: https://github.com/styled-components/jest-styled-components
