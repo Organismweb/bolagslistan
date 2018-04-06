@@ -4,5 +4,6 @@
   "trailingComma": "es5",
   "bracketSpacing": true,
   "arrowParens": "avoid",
-  "parser": "flow"
+  "printWidth": 100,
+  "parser": "flow",
 }

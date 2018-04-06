@@ -1,6 +1,8 @@
 // @flow
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import styled from 'styled-components';
 import './components/_settings/_base';
+import Header from './components/organisms/Header';
 
 type State = {
   text: string,
@@ -14,8 +16,17 @@ class App extends Component<void, State> {
   // How to write functions to get correct scope of this.
   exampleFunction = () => <div>{this.state.text}</div>;
   render() {
-    return <Fragment>{this.exampleFunction()}</Fragment>;
+    return (
+      <AppContainer>
+        <Header />
+      </AppContainer>
+    );
   }
 }
 
 export default App;
+
+const AppContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+`;
