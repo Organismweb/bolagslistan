@@ -2,14 +2,10 @@
   "extends": [
     "airbnb",
     "jest-enzyme",
-    "prettier",
-    "prettier/react",
-    "prettier/flowtype"
+    "prettier"
   ],
   "parser": "babel-eslint",
   "rules": {
-    "prettier/prettier": "error",
-    "linebreak-style": 0,
     "react/jsx-filename-extension": [
       1,
       {
@@ -19,6 +15,7 @@
         ]
       }
     ],
+    "linebreak-style": 0,
     "no-unused-expressions": [
       "error",
       {
@@ -26,7 +23,8 @@
         "allowTernary": true,
         "allowTaggedTemplates": true
       }
-    ]
+    ],
+    "prettier/prettier": "error"
   },
   "env": {
     "browser": true,
