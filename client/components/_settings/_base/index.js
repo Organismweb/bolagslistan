@@ -1,9 +1,16 @@
 import { injectGlobal } from 'styled-components';
-import variables from '../_variables';
+import styledNormalize from 'styled-normalize';
+import { color } from '../_variables';
 
 injectGlobal`
-  ${variables}
+  ${styledNormalize}
+  html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
   body {
-    color: var(--green);
+    color: ${color.green};
   }
 `;
