@@ -63,6 +63,8 @@ Prettier is currently setup with the following packages:
 Basically it turns of ESLint rules relating to formatting and allows Prettier to format the code instead.
 It also reports formatting errors as ESLint issues.
 
+In User Settings in VS Code, set `"eslint.autoFixOnSave": true` if you want prettier to fix issues on every save.
+
 ## VS Code
 
 If your are using VS Code, the following plugins will be necessary.
