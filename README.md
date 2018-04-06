@@ -2,6 +2,13 @@
 
 ### Todo
 
+#### Development
+* [ ] Complete the Header component.
+* [ ] Complete the Sidebar component.
+* [ ] Set up React Router.
+* [ ] Set up Redux.
+
+#### Documentation
 * [ ] Add a simple example of a component using Flow.
 * [x] Add a proper prettier integration with ESLint.
 * [ ] Add a simple test example for a component and for a styled component.
