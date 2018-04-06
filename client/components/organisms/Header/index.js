@@ -1,25 +1,24 @@
-import React, { Component } from 'react';
+// @flow
+
+import React from 'react';
 import styled from 'styled-components';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import { faEye } from '@fortawesome/fontawesome-pro-light';
 import { color, spacing } from '../../_settings/_variables';
 import Logo from '../../atoms/Logo';
+import IconNotification from '../../atoms/IconNotification';
 
-class Header extends Component {
-  state = {};
-  render() {
-    return (
-      <HeaderContainer>
-        <Logo />
-        <ToolBar>
-          <ToolItem>
-            <FontAwesomeIcon icon={faEye} />
-          </ToolItem>
-        </ToolBar>
-      </HeaderContainer>
-    );
-  }
-}
+const Header = () => (
+  <HeaderContainer>
+    <Logo />
+    <ToolBar>
+      <ToolItem>
+        <IconNotification icon="eye" />
+      </ToolItem>
+      <ToolItem>
+        <IconNotification notifications={3} icon="bell" />
+      </ToolItem>
+    </ToolBar>
+  </HeaderContainer>
+);
 
 export default Header;
 
@@ -44,7 +43,10 @@ const ToolBar = styled.ul`
 `;
 
 const ToolItem = styled.li`
+  display: flex;
   list-style: none;
   padding: 0;
-  margin: 0;
+  + li {
+    margin-left: 15px;
+  }
 `;
