@@ -22,15 +22,11 @@ const Header = () => (
 
 export default Header;
 
-const headerSettings = {
-  height: '70px',
-};
-
 const HeaderContainer = styled.header`
+  grid-area: header;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: ${headerSettings.height};
   padding: 0 ${spacing.md};
   background-color: ${color.purple};
 `;

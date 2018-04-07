@@ -21,7 +21,11 @@ const renderIcon = (icon: string) => {
 
 const IconNotification = (props: Props) => (
   <Container>
-    {props.notifications > 0 ? <Notification>{props.notifications}</Notification> : null}
+    {props.notifications > 0 ? (
+      <Notification>
+        <span>{props.notifications}</span>
+      </Notification>
+    ) : null}
     {renderIcon(props.icon)}
   </Container>
 );
@@ -33,22 +37,26 @@ IconNotification.defaultProps = {
 
 const Container = styled.div`
   position: relative;
+  padding: 5px;
 `;
 
-const Notification = styled.span`
+const Notification = styled.div`
   display: inline-block;
   position: absolute;
-  top: -5px;
-  right: -5px;
+  top: -2px;
+  right: -2px;
   width: 16px;
   height: 16px;
   background-color: ${color.red};
   border-radius: 50%;
   text-align: center;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 11px;
   color: white;
   user-select: none;
+  span {
+    vertical-align: middle;
+    line-height: 1;
+  }
 `;
 
 export default IconNotification;
