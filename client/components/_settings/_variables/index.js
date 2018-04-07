@@ -17,6 +17,6 @@ export const spacing = {
   lg: '30px',
 };
 
-export const typography = {
-  purple: 'purple',
+export const font = {
+  main: '"Open Sans", sans-serif',
 };

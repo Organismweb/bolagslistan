@@ -1,9 +1,8 @@
 // @flow
-
 import React from 'react';
 import styled from 'styled-components';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import { faEye, faBell, faExclamationCircle } from '@fortawesome/fontawesome-pro-light';
+import { faEye, faBell, faExclamationCircle } from '@fortawesome/fontawesome-pro-solid';
 import { color } from '../../_settings/_variables';
 
 type Props = {
@@ -27,6 +26,11 @@ const IconNotification = (props: Props) => (
   </Container>
 );
 
+IconNotification.defaultProps = {
+  notifications: 0,
+  icon: '',
+};
+
 const Container = styled.div`
   position: relative;
 `;
@@ -46,10 +50,5 @@ const Notification = styled.span`
   color: white;
   user-select: none;
 `;
-
-IconNotification.defaultProps = {
-  notifications: 0,
-  icon: '',
-};
 
 export default IconNotification;

@@ -1,6 +1,6 @@
 import { injectGlobal } from 'styled-components';
 import styledNormalize from 'styled-normalize';
-import { color } from '../_variables';
+import { color, font } from '../_variables';
 
 injectGlobal`
   ${styledNormalize}
@@ -11,6 +11,7 @@ injectGlobal`
     box-sizing: inherit;
   }
   body {
+    font-family: ${font.main};
     color: ${color.green};
   }
 `;

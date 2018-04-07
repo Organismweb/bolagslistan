@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/9.10.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js flow
+  /usr/local/Cellar/node/9.10.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js start
 
 PATH: 
   /usr/local/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/jonathanselwall/.rvm/bin:/Users/jonathanselwall/.rvm/bin
@@ -8346,9 +8346,9 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 2
+  Exit code: 1
   Command: sh
-  Arguments: -c flow
+  Arguments: -c webpack-dev-server --hot
   Directory: /Projects/private/bolagslistan_v3
   Output:
   

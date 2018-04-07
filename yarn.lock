@@ -94,6 +94,12 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.1.3"
 
+"@fortawesome/fontawesome-pro-solid@^5.0.9":
+  version "5.0.9"
+  resolved "https://npm.fontawesome.com/9606C901-D5A3-47E3-855D-9B725CCB3601/@fortawesome/fontawesome-pro-solid/-/fontawesome-pro-solid-5.0.9.tgz#5a4f2a7def2afe9b61b3c8067d39d528908f3a1c"
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.1.3"
+
 "@fortawesome/fontawesome@^1.1.5":
   version "1.1.5"
   resolved "https://npm.fontawesome.com/9606C901-D5A3-47E3-855D-9B725CCB3601/@fortawesome/fontawesome/-/fontawesome-1.1.5.tgz#c7cfafdd3364245626293cc670357f9fb8487170"
@@ -7837,6 +7843,10 @@ wbuf@^1.1.0, wbuf@^1.7.2:
   resolved "https://registry.yarnpkg.com/wbuf/-/wbuf-1.7.3.tgz#c1d8d149316d3ea852848895cb6a0bfe887b87df"
   dependencies:
     minimalistic-assert "^1.0.0"
+
+webfontloader@^1.6.28:
+  version "1.6.28"
+  resolved "https://registry.yarnpkg.com/webfontloader/-/webfontloader-1.6.28.tgz#db786129253cb6e8eae54c2fb05f870af6675bae"
 
 webidl-conversions@^4.0.1, webidl-conversions@^4.0.2:
   version "4.0.2"
