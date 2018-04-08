@@ -1,38 +1,26 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import { faEye, faBell, faExclamationCircle } from '@fortawesome/fontawesome-pro-solid';
 import { color } from '../../_settings/_variables';
 
 type Props = {
-  notifications: number,
-  icon: string,
-};
-
-const renderIcon = (icon: string) => {
-  if (icon === 'eye') {
-    return <FontAwesomeIcon icon={faEye} color={color.darkPurple} size="lg" />;
-  } else if (icon === 'bell') {
-    return <FontAwesomeIcon icon={faBell} color={color.darkPurple} size="lg" />;
-  }
-  return <FontAwesomeIcon icon={faExclamationCircle} color={color.red} size="lg" />;
+  notifications?: number,
+  children: React.Node,
 };
 
 const IconNotification = (props: Props) => (
   <Container>
-    {props.notifications > 0 ? (
+    {props.notifications && props.notifications > 0 ? (
       <Notification>
         <span>{props.notifications}</span>
       </Notification>
     ) : null}
-    {renderIcon(props.icon)}
+    {props.children}
   </Container>
 );
 
 IconNotification.defaultProps = {
   notifications: 0,
-  icon: '',
 };
 
 const Container = styled.div`

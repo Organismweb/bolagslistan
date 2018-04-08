@@ -2,6 +2,8 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faEye, faBell } from '@fortawesome/fontawesome-pro-solid';
 import { color, spacing } from '../../_settings/_variables';
 import Logo from '../../atoms/Logo';
 import IconNotification from '../../atoms/IconNotification';
@@ -11,10 +13,14 @@ const Header = () => (
     <Logo />
     <ToolBar>
       <ToolItem>
-        <IconNotification icon="eye" />
+        <IconNotification>
+          <FontAwesomeIcon icon={faEye} color={color.darkPurple} size="lg" />
+        </IconNotification>
       </ToolItem>
       <ToolItem>
-        <IconNotification notifications={3} icon="bell" />
+        <IconNotification notifications={3}>
+          <FontAwesomeIcon icon={faBell} color={color.darkPurple} size="lg" />
+        </IconNotification>
       </ToolItem>
     </ToolBar>
   </HeaderContainer>

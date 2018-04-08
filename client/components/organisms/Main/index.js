@@ -13,6 +13,7 @@ Main.defaultProps = {
 };
 
 const MainStyle = styled.main`
+  position: relative;
   grid-area: main;
   background-color: ${color.lightGrey};
 `;
