@@ -1,4 +1,6 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { color, spacing, font } from '../../_settings/_variables';
