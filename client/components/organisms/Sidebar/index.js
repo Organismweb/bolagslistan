@@ -1,10 +1,11 @@
 // @flow
-import * as React from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faEnvelopeOpen, faFile, faStar, faCog, faFlag } from '@fortawesome/fontawesome-pro-solid';
 import { color, spacing } from '../../_settings/_variables';
+import Label from '../../atoms/Label';
+import MenuItem from '../../atoms/MenuItem';
 
 const Sidebar = () => (
   <SidebarStyle>
@@ -25,22 +26,14 @@ const Sidebar = () => (
         <FontAwesomeIcon icon={faFlag} size="lg" color={color.darkGrey} />
       </MenuItem>
     </MenuContainer>
+    <TagsContainer>
+      <h3>Sparade Söktermer</h3>
+      <Label title="Lorem ipsum" />
+      <Label title="Företag i Göteborg" />
+      <Label title="Snickerier i Stockholm" />
+      <Label title="Javisst" />
+    </TagsContainer>
   </SidebarStyle>
-);
-
-type ItemProps = {
-  link: string,
-  title: string,
-  children: React.Node,
-};
-
-const MenuItem = (props: ItemProps) => (
-  <ListItem>
-    <ListLink to={props.link} exact>
-      <ListItemIcon>{props.children}</ListItemIcon>
-      <ListItemTitle>{props.title}</ListItemTitle>
-    </ListLink>
-  </ListItem>
 );
 
 const SidebarStyle = styled.aside`
@@ -57,37 +50,13 @@ const MenuContainer = styled.ul`
   margin: 0;
 `;
 
-const ListItem = styled.li`
-  list-style: none;
-`;
-
-const ListItemTitle = styled.span`
-  color: ${color.darkGrey};
-`;
-
-const ListItemIcon = styled.span`
-  display: inline-block;
-  width: 40px;
-`;
-
-const NavLinkStyle = styled.a`
-  display: block;
-  width: 100%;
-  padding-top: ${spacing.md};
-  padding-bottom: ${spacing.md};
+const TagsContainer = styled.div`
   padding-left: ${spacing.lg};
   padding-right: ${spacing.lg};
-  text-decoration: none;
-  &.active {
-    color: ${color.black};
-    ${ListItemTitle} {
-      color: ${color.black};
-    }
-    path {
-      fill: ${color.purple};
-    }
+  span {
+    margin-bottom: ${spacing.xs};
+    margin-right: ${spacing.xs};
   }
 `;
-const ListLink = NavLinkStyle.withComponent(NavLink);
 
 export default Sidebar;

@@ -19,5 +19,12 @@ export const spacing = {
 };
 
 export const font = {
-  main: '"Open Sans", sans-serif',
+  family: {
+    main: '"Open Sans", sans-serif',
+  },
+  size: {
+    xs: '10px',
+    sm: '12px',
+    md: '16px',
+  },
 };

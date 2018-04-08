@@ -2,7 +2,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { color } from '../../_settings/_variables';
+import { color, spacing } from '../../_settings/_variables';
 
 type Props = {
   children?: any,
@@ -18,6 +18,7 @@ const MainStyle = styled.main`
   position: relative;
   grid-area: main;
   background-color: ${color.lightGrey};
+  padding: ${spacing.md};
 `;
 
 export default Main;

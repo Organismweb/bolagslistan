@@ -11,7 +11,7 @@ injectGlobal`
     box-sizing: inherit;
   }
   body {
-    font-family: ${font.main};
+    font-family: ${font.family.main};
     color: ${color.black};
   }
 `;
