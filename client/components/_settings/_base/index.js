@@ -12,6 +12,6 @@ injectGlobal`
   }
   body {
     font-family: ${font.main};
-    color: ${color.green};
+    color: ${color.black};
   }
 `;
