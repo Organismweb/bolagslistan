@@ -3,11 +3,16 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './components/_settings/_base';
+
 import Header from './components/organisms/Header';
 import Sidebar from './components/organisms/Sidebar';
 import Main from './components/organisms/Main';
+
 import Dashboard from './components/pages/Dashboard';
 import Notes from './components/pages/Notes';
+import Watchings from './components/pages/Watchings';
+import Settings from './components/pages/Settings';
+import Support from './components/pages/Support';
 
 type State = {
   text: string,
@@ -28,7 +33,10 @@ class App extends Component<void, State> {
           <Sidebar />
           <Main>
             <Route exact path="/" component={Dashboard} />
-            <Route path="/notes" component={Notes} />
+            <Route path="/anteckningar" component={Notes} />
+            <Route path="/bevakningar" component={Watchings} />
+            <Route path="/installningar" component={Settings} />
+            <Route path="/support" component={Support} />
           </Main>
         </AppContainer>
       </Router>
