@@ -1,6 +1,6 @@
 // @flow
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
@@ -15,31 +15,20 @@ import Support from './components/pages/Support';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
-type State = {
-  text: string,
-};
-
-class App extends Component<void, State> {
-  // How to write functions to get correct scope of this.
-  state = {
-    text: 'Hejsan',
-  };
-  exampleFunction = () => <div>{this.state.text}</div>;
-  render() {
-    return (
-      <Provider store={createStoreWithMiddleware(reducers)}>
-        <Router>
-          <AppTemplate>
-            <Route exact path="/" component={Dashboard} />
-            <Route path="/anteckningar" component={Notes} />
-            <Route path="/bevakningar" component={Watchings} />
-            <Route path="/installningar" component={Settings} />
-            <Route path="/support" component={Support} />
-          </AppTemplate>
-        </Router>
-      </Provider>
-    );
-  }
-}
+const App = () => (
+  <Provider store={createStoreWithMiddleware(reducers)}>
+    <Router>
+      <AppTemplate>
+        <Switch>
+          <Route exact path="/" component={Dashboard} />
+          <Route path="/anteckningar" component={Notes} />
+          <Route path="/bevakningar" component={Watchings} />
+          <Route path="/installningar" component={Settings} />
+          <Route path="/support" component={Support} />
+        </Switch>
+      </AppTemplate>
+    </Router>
+  </Provider>
+);
 
 export default App;

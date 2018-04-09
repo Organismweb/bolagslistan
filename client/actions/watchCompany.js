@@ -1,8 +1,11 @@
-import { COMPANY_WATCH } from '../constants';
+import { COMPANY_WATCH, COMPANY_UNWATCH } from '../constants';
 
-const watchCompany = company => ({
+export const watchCompany = company => ({
   type: COMPANY_WATCH,
   payload: company,
 });
 
-export default watchCompany;
+export const unWatchCompany = company => ({
+  type: COMPANY_UNWATCH,
+  payload: company,
+});
