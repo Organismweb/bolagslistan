@@ -14,6 +14,12 @@ type Props = {
 };
 
 class Dashboard extends Component<Props> {
+  renderWatched = () => {
+    if (this.props.watched.length) {
+      return this.props.watched.map(company => <li key={company.name}>{company.name}</li>);
+    }
+    return null;
+  };
   renderCompanies = () =>
     this.props.companies.map(company => (
       <li key={company.name}>
@@ -21,11 +27,6 @@ class Dashboard extends Component<Props> {
         <button onClick={() => this.props.watchCompany(company)}>Bevaka</button>
       </li>
     ));
-  renderWatched = () => {
-    if (this.props.watched.length) {
-      this.props.watched.map(company => <li key={company.name}>{company.name}</li>);
-    }
-  };
 
   render() {
     return (
