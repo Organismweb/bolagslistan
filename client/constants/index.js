@@ -1,0 +1,2 @@
+export const COMPANY_UNWATCH = 'COMPANY_UNWATCH';
+export const COMPANY_WATCH = 'COMPANY_WATCH';
