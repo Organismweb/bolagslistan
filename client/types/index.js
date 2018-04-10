@@ -1,3 +1,5 @@
+// @flow
 export type Company = {
-  name: string,
+  title: string,
+  id: number,
 };

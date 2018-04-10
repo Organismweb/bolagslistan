@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import CompaniesReducer from './reducer_companies';
-import WatchedCompaniesReducer from './reducer_watched';
+import companiesReducer from './reducer_companies';
+import watchedCompaniesReducer from './reducer_watched';
 
 const rootReducer = combineReducers({
-  companies: CompaniesReducer,
-  watched: WatchedCompaniesReducer,
+  companies: companiesReducer,
+  watched: watchedCompaniesReducer,
 });
 
 export default rootReducer;

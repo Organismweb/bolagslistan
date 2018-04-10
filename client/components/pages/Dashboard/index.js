@@ -4,8 +4,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import type { Dispatch } from 'redux';
+import fetchCompanies from '../../../actions/fetchCompanies';
 import { watchCompany, unWatchCompany } from '../../../actions/watchCompany';
-import { Company } from '../../../types';
+import type { Company } from '../../../types';
 
 type Props = {
   companies: [Company],
@@ -14,15 +15,19 @@ type Props = {
   },
   watchCompany: (arg: Company) => void,
   unWatchCompany: (arg: Company) => void,
+  fetchCompanies: () => void,
 };
 
 class Dashboard extends Component<Props> {
+  componentDidMount() {
+    this.props.fetchCompanies();
+  }
   renderWatched = () => {
     const companies = this.props.watched;
     if (Object.keys(companies).length) {
       return Object.keys(companies).map(company => (
-        <li key={company}>
-          {companies[company].name}
+        <li key={companies[company].id}>
+          {companies[company].title}
           <button onClick={() => this.props.unWatchCompany(companies[company])}>Bevaka</button>
         </li>
       ));
@@ -31,13 +36,14 @@ class Dashboard extends Component<Props> {
   };
   renderCompanies = () =>
     this.props.companies.map(company => (
-      <li key={company.name}>
-        {company.name}
+      <li key={company.id}>
+        {company.title}
         <button onClick={() => this.props.watchCompany(company)}>Bevaka</button>
       </li>
     ));
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <ul>{this.renderCompanies()}</ul>
@@ -55,6 +61,6 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = (dispatch: Dispatch<*>) =>
-  bindActionCreators({ watchCompany, unWatchCompany }, dispatch);
+  bindActionCreators({ fetchCompanies, watchCompany, unWatchCompany }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
