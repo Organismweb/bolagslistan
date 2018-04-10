@@ -6,6 +6,7 @@ import { faEnvelopeOpen, faFile, faStar, faCog, faFlag } from '@fortawesome/font
 import { color, spacing } from '../../_settings/_variables';
 import Label from '../../atoms/Label';
 import MenuItem from '../../atoms/MenuItem';
+import { Anchor } from '../../atoms/Button';
 
 const Sidebar = () => (
   <SidebarStyle>
@@ -33,11 +34,18 @@ const Sidebar = () => (
       <Label title="Snickerier i Stockholm" />
       <Label title="Javisst" />
     </TagsContainer>
+    <ButtonContainer>
+      <Anchor cta to="/">
+        Skaffa Premium
+      </Anchor>
+    </ButtonContainer>
   </SidebarStyle>
 );
 
 const SidebarStyle = styled.aside`
   grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
   position: relative;
   z-index: 2;
   background-color: ${color.white};
@@ -56,6 +64,14 @@ const TagsContainer = styled.div`
   span {
     margin-bottom: ${spacing.xs};
     margin-right: ${spacing.xs};
+  }
+`;
+
+const ButtonContainer = styled.div`
+  margin-top: auto;
+  padding: ${spacing.lg};
+  ${Anchor} {
+    width: 100%;
   }
 `;
 

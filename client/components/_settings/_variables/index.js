@@ -12,10 +12,12 @@ export const color = {
 };
 
 export const spacing = {
+  xxs: '5px',
   xs: '10px',
   sm: '15px',
   md: '20px',
   lg: '30px',
+  xl: '40px',
 };
 
 export const font = {
@@ -26,5 +28,7 @@ export const font = {
     xs: '10px',
     sm: '12px',
     md: '16px',
+    lg: '32px',
+    xl: '72px',
   },
 };
