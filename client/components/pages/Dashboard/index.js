@@ -21,6 +21,7 @@ type Props = {
 class Dashboard extends Component<Props> {
   componentDidMount() {
     this.props.fetchCompanies();
+    console.log('hej');
   }
   renderWatched = () => {
     const companies = this.props.watched;
@@ -43,7 +44,6 @@ class Dashboard extends Component<Props> {
     ));
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <ul>{this.renderCompanies()}</ul>

@@ -2,7 +2,7 @@ import { COMPANIES_FETCH, COMPANIES_FETCH_ERROR } from '../constants';
 import fetchErrorHandler from '../utils/fetchErrorHandler';
 
 const fetchCompanies = () => dispatch => {
-  fetch('https://jsonplaceholder.typicode.com/posts?_start=10&_end=30')
+  fetch('https://jsonplaceholder.typicode.com/posts?_page=1')
     .then(fetchErrorHandler)
     .then(response => response.json())
     .then(payload => {
