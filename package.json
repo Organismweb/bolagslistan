@@ -80,6 +80,7 @@
     "jest-enzyme": "^6.0.0",
     "jest-styled-components": "^5.0.1",
     "prettier": "1.11.1",
+    "redux-devtools-extension": "^2.13.2",
     "svg-react-loader": "^0.4.5",
     "webpack-cli": "^2.0.13"
   }

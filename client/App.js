@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import reducers from './reducers';
 import './components/_settings/_base';
@@ -13,10 +14,10 @@ import Watchings from './components/pages/Watchings';
 import Settings from './components/pages/Settings';
 import Support from './components/pages/Support';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const store = createStore(reducers, composeWithDevTools(applyMiddleware()));
 
 const App = () => (
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={store}>
     <Router>
       <AppTemplate>
         <Switch>
