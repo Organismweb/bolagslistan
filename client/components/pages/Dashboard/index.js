@@ -10,9 +10,6 @@ import type { Company } from '../../../types';
 
 type Props = {
   companies: [Company],
-  watched: {
-    [key: string]: Company,
-  },
   watchCompany: (arg: Company) => void,
   unWatchCompany: (arg: Company) => void,
   fetchCompanies: () => void,
@@ -20,34 +17,30 @@ type Props = {
 
 class Dashboard extends Component<Props> {
   componentDidMount() {
-    this.props.fetchCompanies();
-    console.log('hej');
-  }
-  renderWatched = () => {
-    const companies = this.props.watched;
-    if (Object.keys(companies).length) {
-      return Object.keys(companies).map(company => (
-        <li key={companies[company].id}>
-          {companies[company].title}
-          <button onClick={() => this.props.unWatchCompany(companies[company])}>Bevaka</button>
-        </li>
-      ));
+    if (!this.props.companies.length) {
+      this.props.fetchCompanies();
     }
-    return null;
-  };
+  }
   renderCompanies = () =>
-    this.props.companies.map(company => (
-      <li key={company.id}>
-        {company.title}
-        <button onClick={() => this.props.watchCompany(company)}>Bevaka</button>
-      </li>
-    ));
+    this.props.companies.map(company => {
+      let button;
+      if (!company.watched) {
+        button = <button onClick={() => this.props.watchCompany(company)}>Bevaka</button>;
+      } else {
+        button = <button onClick={() => this.props.unWatchCompany(company)}>Sluta bevaka</button>;
+      }
+      return (
+        <li key={company.id}>
+          {company.title}
+          {button}
+        </li>
+      );
+    });
 
   render() {
     return (
       <div>
         <ul>{this.renderCompanies()}</ul>
-        <ul>{this.renderWatched()}</ul>
       </div>
     );
   }
@@ -56,7 +49,6 @@ class Dashboard extends Component<Props> {
 function mapStateToProps(state) {
   return {
     companies: state.companies,
-    watched: state.watched,
   };
 }
 
