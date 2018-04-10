@@ -7,6 +7,7 @@ import type { Dispatch } from 'redux';
 import fetchCompanies from '../../../actions/fetchCompanies';
 import { watchCompany, unWatchCompany } from '../../../actions/watchCompany';
 import type { Company } from '../../../types';
+import WatchClickOutside from '../../atoms/WatchClickOutside';
 
 type Props = {
   companies: [Company],
@@ -32,7 +33,13 @@ class Dashboard extends Component<Props> {
       return (
         <li key={company.id}>
           {company.title}
-          {button}
+          <WatchClickOutside
+            onClickOutside={() => {
+              console.log('din moder');
+            }}
+          >
+            {button}
+          </WatchClickOutside>
         </li>
       );
     });
