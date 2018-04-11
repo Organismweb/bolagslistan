@@ -48,7 +48,6 @@ function mapStateToProps(state) {
   };
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<*>) =>
-  bindActionCreators({ unWatchCompany }, dispatch);
+const mapDispatchToProps = (dispatch: Dispatch<*>) => bindActionCreators({ unWatchCompany }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Watchings);

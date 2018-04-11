@@ -27,7 +27,7 @@ export const Label = (props: LabelProps) => <LabelStyle>{props.title}</LabelStyl
 
 type LabelLinkProps = {
   title: string,
-  to: string,
+  to: any,
 };
 
 export const LabelLink = (props: LabelLinkProps) => (

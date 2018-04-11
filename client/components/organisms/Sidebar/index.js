@@ -29,7 +29,7 @@ const Sidebar = () => (
     </MenuContainer>
     <TagsContainer>
       <h3>Sparade Söktermer</h3>
-      <LabelLink to="/" title="Lorem ipsum" />
+      <LabelLink to="/?asdasdasdasd" title="Lorem ipsum" />
       <LabelLink to="/" title="Företag i Göteborg" />
       <LabelLink to="/" title="Snickerier i Stockholm" />
       <LabelLink to="/" title="Javisst" />

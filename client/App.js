@@ -17,11 +17,11 @@ const App = () => (
     <Router>
       <AppTemplate>
         <Switch>
-          <Route exact path="/" component={Dashboard} />
           <Route path="/anteckningar" component={Notes} />
           <Route path="/bevakningar" component={Watchings} />
           <Route path="/installningar" component={Settings} />
           <Route path="/support" component={Support} />
+          <Route path="/" component={Dashboard} />
         </Switch>
       </AppTemplate>
     </Router>
