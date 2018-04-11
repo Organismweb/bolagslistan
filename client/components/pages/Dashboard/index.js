@@ -7,12 +7,12 @@ import type { Dispatch } from 'redux';
 import fetchCompanies from '../../../actions/fetchCompanies';
 import { watchCompany, unWatchCompany } from '../../../actions/watchCompany';
 import type { Company } from '../../../types';
-import WatchClickOutside from '../../atoms/WatchClickOutside';
 
 type Props = {
   companies: [Company],
-  watchCompany: (arg: Company) => void,
-  unWatchCompany: (arg: Company) => void,
+  watchings: [number],
+  watchCompany: (arg: number) => void,
+  unWatchCompany: (arg: number) => void,
   fetchCompanies: () => void,
 };
 
@@ -25,21 +25,19 @@ class Dashboard extends Component<Props> {
   renderCompanies = () =>
     this.props.companies.map(company => {
       let button;
-      if (!company.watched) {
-        button = <button onClick={() => this.props.watchCompany(company)}>Bevaka</button>;
+      const { watchings } = this.props;
+      if (watchings.length && watchings.indexOf(company.id) > -1) {
+        button = (
+          <button onClick={() => this.props.unWatchCompany(company.id)}>Sluta Bevaka</button>
+        );
       } else {
-        button = <button onClick={() => this.props.unWatchCompany(company)}>Sluta bevaka</button>;
+        button = <button onClick={() => this.props.watchCompany(company.id)}>Bevaka</button>;
       }
+
       return (
         <li key={company.id}>
           {company.title}
-          <WatchClickOutside
-            onClickOutside={() => {
-              console.log('din moder');
-            }}
-          >
-            {button}
-          </WatchClickOutside>
+          {button}
         </li>
       );
     });
@@ -56,6 +54,7 @@ class Dashboard extends Component<Props> {
 function mapStateToProps(state) {
   return {
     companies: state.companies,
+    watchings: state.watchings,
   };
 }
 

@@ -2,13 +2,8 @@
 
 import * as React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { font, spacing } from '../../_settings/_variables';
-
-type Props = {
-  title: string,
-};
-
-const Label = (props: Props) => <LabelStyle>{props.title}</LabelStyle>;
 
 const LabelStyle = styled.span`
   display: inline-block;
@@ -24,4 +19,19 @@ const LabelStyle = styled.span`
   border: solid 1px #dfe3e8;
 `;
 
-export default Label;
+type LabelProps = {
+  title: string,
+};
+
+export const Label = (props: LabelProps) => <LabelStyle>{props.title}</LabelStyle>;
+
+type LabelLinkProps = {
+  title: string,
+  to: string,
+};
+
+export const LabelLink = (props: LabelLinkProps) => (
+  <Link {...props}>
+    <LabelStyle>{props.title}</LabelStyle>
+  </Link>
+);

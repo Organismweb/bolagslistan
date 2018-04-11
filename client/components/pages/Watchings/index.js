@@ -9,17 +9,28 @@ import type { Company } from '../../../types';
 
 type Props = {
   companies: [Company],
-  unWatchCompany: (arg: Company) => void,
+  watchings: [number],
+  unWatchCompany: (arg: number) => void,
 };
 
 class Watchings extends Component<Props> {
-  renderWatchedCompanies = () =>
-    this.props.companies.filter(company => company.watched === true).map(company => (
-      <li key={company.id}>
-        {company.title}
-        <button onClick={() => this.props.unWatchCompany(company)}>Sluta bevaka</button>
-      </li>
-    ));
+  renderWatchedCompanies = () => {
+    const { companies, watchings } = this.props;
+    if (watchings.length) {
+      return companies.map(company => {
+        if (watchings.indexOf(company.id) > -1) {
+          return (
+            <li key={company.id}>
+              {company.title}
+              <button onClick={() => this.props.unWatchCompany(company.id)}>Sluta Bevaka</button>
+            </li>
+          );
+        }
+        return null;
+      });
+    }
+    return null;
+  };
 
   render() {
     return (
@@ -33,6 +44,7 @@ class Watchings extends Component<Props> {
 function mapStateToProps(state) {
   return {
     companies: state.companies,
+    watchings: state.watchings,
   };
 }
 

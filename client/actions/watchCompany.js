@@ -1,11 +1,11 @@
 import { COMPANY_WATCH, COMPANY_UNWATCH } from '../constants';
 
-export const watchCompany = company => ({
+export const watchCompany = id => ({
   type: COMPANY_WATCH,
-  payload: company,
+  id,
 });
 
-export const unWatchCompany = company => ({
+export const unWatchCompany = id => ({
   type: COMPANY_UNWATCH,
-  payload: company,
+  id,
 });

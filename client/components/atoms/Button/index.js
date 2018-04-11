@@ -1,3 +1,4 @@
+import * as React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { color, font, spacing } from '../../_settings/_variables';
@@ -39,4 +40,11 @@ export const Button = styled.button`
   }};
 `;
 
-export const Anchor = Button.withComponent(Link);
+// Todo fix prop validation for the linkfilter so eslint doesnt need to be disabled.
+/* eslint-disable */
+const ButtonLinkFilter = ({small, big, xl, primary, secondary, cta, light, ...props}) => {
+  return <Link {...props} />;
+}
+
+export const Anchor = Button.withComponent(ButtonLinkFilter);
+/* eslint-enable */

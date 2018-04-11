@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faEnvelopeOpen, faFile, faStar, faCog, faFlag } from '@fortawesome/fontawesome-pro-solid';
 import { color, spacing } from '../../_settings/_variables';
-import Label from '../../atoms/Label';
+import { LabelLink } from '../../atoms/Label';
 import MenuItem from '../../atoms/MenuItem';
 import { Anchor } from '../../atoms/Button';
 
@@ -29,10 +29,10 @@ const Sidebar = () => (
     </MenuContainer>
     <TagsContainer>
       <h3>Sparade Söktermer</h3>
-      <Label title="Lorem ipsum" />
-      <Label title="Företag i Göteborg" />
-      <Label title="Snickerier i Stockholm" />
-      <Label title="Javisst" />
+      <LabelLink to="/" title="Lorem ipsum" />
+      <LabelLink to="/" title="Företag i Göteborg" />
+      <LabelLink to="/" title="Snickerier i Stockholm" />
+      <LabelLink to="/" title="Javisst" />
     </TagsContainer>
     <ButtonContainer>
       <Anchor cta to="/">
@@ -70,7 +70,7 @@ const TagsContainer = styled.div`
 const ButtonContainer = styled.div`
   margin-top: auto;
   padding: ${spacing.lg};
-  ${Anchor} {
+  a {
     width: 100%;
   }
 `;
