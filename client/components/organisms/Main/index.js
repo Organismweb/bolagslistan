@@ -19,6 +19,7 @@ const MainStyle = styled.main`
   grid-area: main;
   background-color: ${color.lightGrey};
   padding: ${spacing.md};
+  overflow-y: scroll;
 `;
 
 export default Main;

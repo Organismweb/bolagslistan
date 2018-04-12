@@ -1,17 +1,51 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import type { Dispatch } from 'redux';
+import fetchCompanies from '../../../actions/fetchCompanies';
+import { watchCompany, unWatchCompany } from '../../../actions/watchCompany';
 import type { Company } from '../../../types';
+import ListItem from '../../molecules/ListItem';
 
 type Props = {
   companies: [Company],
+  watchings: [number],
+  renderOnlyWatched: boolean,
+  watchCompany: () => void,
+  unWatchCompany: () => void,
+  fetchCompanies: () => void,
 };
 
-export default class BolagsListan extends Component<Props> {
+class BolagsListan extends Component<Props> {
+  componentDidMount() {
+    if (!this.props.companies.length) {
+      this.props.fetchCompanies();
+    }
+  }
   renderCompanies = () => {
-    const { companies } = this.props;
+    let { companies } = this.props;
+    const { watchings } = this.props;
     if (companies.length) {
-      return companies.map(company => <ListItem key={company.id} name={company.title} />);
+      if (this.props.renderOnlyWatched) {
+        companies = companies.filter(company => watchings.indexOf(company.id) > -1);
+        console.log(companies);
+      }
+      return companies.map(company => {
+        let watched = false;
+        if (watchings.length) {
+          watched = watchings.indexOf(company.id) > -1;
+        }
+        return (
+          <ListItem
+            key={company.id}
+            watched={watched}
+            company={company}
+            watchCompany={this.props.watchCompany}
+            unWatchCompany={this.props.unWatchCompany}
+          />
+        );
+      });
     }
   };
 
@@ -20,34 +54,23 @@ export default class BolagsListan extends Component<Props> {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    companies: state.companies,
+    watchings: state.watchings,
+  };
+}
+
+const mapDispatchToProps = (dispatch: Dispatch<*>) =>
+  bindActionCreators({ fetchCompanies, watchCompany, unWatchCompany }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(BolagsListan);
+
 const List = styled.ul`
-  positon: relative;
-`;
-
-const ListItemStyle = styled.li`
-  list-style: none;
+  position: relative;
   display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 `;
-
-const Star = styled.button``;
-
-const Name = styled.h2``;
-
-const Span = styled.span``;
-
-const Arrow = styled.button``;
-
-type ListItemProps = {
-  name: 'string',
-};
-
-const ListItem = (props: ListItemProps) => (
-  <ListItemStyle>
-    <Star />
-    <Name>{props.name}</Name>
-    <Span />
-    <Span />
-    <Span />
-    <Arrow />
-  </ListItemStyle>
-);

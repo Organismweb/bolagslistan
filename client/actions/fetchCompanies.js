@@ -1,8 +1,18 @@
-import { COMPANIES_FETCH, COMPANIES_FETCH_ERROR } from '../constants';
+import base64 from 'base-64';
+import { COMPANIES_FETCH, COMPANIES_FETCH_ERROR, BASE_URL } from '../constants';
+import { API_KEY, ADMIN, PASSWORD } from '../credentials';
 import fetchErrorHandler from '../utils/fetchErrorHandler';
 
+const auth = base64.encode(`${ADMIN}:${PASSWORD}`);
+const headers = new Headers();
+headers.append('Authorization', `Basic ${auth}`);
+headers.append('X-API-KEY', API_KEY);
+
 const fetchCompanies = () => dispatch => {
-  fetch('https://jsonplaceholder.typicode.com/posts?_page=1')
+  fetch(`${BASE_URL}/companies`, {
+    headers,
+    mode: 'no-cors',
+  })
     .then(fetchErrorHandler)
     .then(response => response.json())
     .then(payload => {
