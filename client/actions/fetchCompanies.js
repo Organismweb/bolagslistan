@@ -3,15 +3,15 @@ import { COMPANIES_FETCH, COMPANIES_FETCH_ERROR, BASE_URL } from '../constants';
 import { API_KEY, ADMIN, PASSWORD } from '../credentials';
 import fetchErrorHandler from '../utils/fetchErrorHandler';
 
-const auth = base64.encode(`${ADMIN}:${PASSWORD}`);
 const headers = new Headers();
-headers.append('Authorization', `Basic ${auth}`);
+const authorization = base64.encode(`${ADMIN}:${PASSWORD}`);
+
+headers.append('Authorization', `Basic ${authorization}`);
 headers.append('X-API-KEY', API_KEY);
 
 const fetchCompanies = () => dispatch => {
-  fetch(`${BASE_URL}/companies`, {
+  fetch(`https://cors-anywhere.herokuapp.com/${BASE_URL}/companies`, {
     headers,
-    mode: 'no-cors',
   })
     .then(fetchErrorHandler)
     .then(response => response.json())

@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faStar, faChevronDown } from '@fortawesome/fontawesome-pro-solid';
+import moment from 'moment';
 import { color, spacing, font } from '../../_settings/_variables';
 import { Company } from '../../../types';
 
@@ -9,50 +10,56 @@ type Props = {
   company: Company,
   watchCompany: (arg: number) => void,
   unWatchCompany: (arg: number) => void,
+  toggleCompany: (arg: number) => void,
   watched: boolean,
+  selected: boolean,
 };
 
 export default class ListItem extends React.Component<Props> {
-  state = {
-    open: false,
-  };
+  // This returns the correct method to the star button.
   watchHandler = e => {
     e.stopPropagation();
     const { company } = this.props;
+    // If the company is watched, return the unwatch method.
+    // If not watched return the watch method.
     if (this.props.watched) {
       return this.props.unWatchCompany(company.id);
     }
     return this.props.watchCompany(company.id);
   };
-  toggleList = e => {
-    e.stopPropagation();
-    const newState = { ...this.state };
-    this.state.open ? (newState.open = false) : (newState.open = true);
-    this.setState(newState);
+  // Format the date string to local string.
+  datetoString = () => {
+    moment.locale('sv');
+    moment.updateLocale('sv', {
+      monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
+    });
+    return moment(this.props.company.reg_date).format('D MMM YYYY');
   };
   render() {
+    const { company } = this.props;
     return (
-      <ListItemContainer onClick={this.toggleList}>
-        <ListItemUpper>
+      <ListItemContainer>
+        <ListItemUpper onClick={e => this.props.toggleCompany(e, company.id)}>
           <StarButton onClick={this.watchHandler} watched={this.props.watched}>
             <FontAwesomeIcon icon={faStar} color={color.yellow} />
           </StarButton>
           <Name>
-            <h3>Görans Bygg AB</h3>
+            <h3>{company.name.toLowerCase()}</h3>
           </Name>
-          <Location>
-            <span>Västra Götaland</span>
-          </Location>
-          <Category>
-            <span>Snickeri</span>
-          </Category>
-          <Date>
-            <span>17 April 2018</span>
-          </Date>
-          <Arrow>
+          <ListItemCell>
+            <span>{company.county_code.toLowerCase()}</span>
+          </ListItemCell>
+          <ListItemCell>
+            <span>Lorem ipsum kategori</span>
+          </ListItemCell>
+          <ListItemCell>
+            <span>{this.datetoString()}</span>
+          </ListItemCell>
+          <Arrow open={this.props.selected}>
             <FontAwesomeIcon icon={faChevronDown} />
           </Arrow>
         </ListItemUpper>
+        <ListItemLower open={this.props.selected}>asdasdasd</ListItemLower>
       </ListItemContainer>
     );
   }
@@ -61,16 +68,15 @@ export default class ListItem extends React.Component<Props> {
 const ListItemContainer = styled.li`
   list-style: none;
   margin-bottom: 15px;
+  background-color: ${color.white};
+  border: 1px solid ${color.grey};
+  box-shadow: 0 2px 4px 0 rgba(31, 46, 61, 0.06);
 `;
 
 const ListItemUpper = styled.div`
   display: grid;
-  grid-template-columns: 60px 1fr 1fr 1fr 1fr 60px;
+  grid-template-columns: 60px 25% 20% 1fr 15% 60px;
   height: 60px;
-  background: ${color.white};
-  border: 1px solid ${color.grey};
-  box-shadow: 0 2px 4px 0 rgba(31, 46, 61, 0.06);
-
   cursor: pointer;
   + li {
     margin-top: ${spacing.md};
@@ -102,22 +108,35 @@ const ListItemCell = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  text-transform: capitalize;
+  color: #5f6b7a;
+  font-size: 14px;
 `;
 
 const Name = ListItemCell.extend`
   h3 {
+    font-weight: bold;
+    color: ${color.black};
     font-size: ${font.size.md};
     margin: 0;
   }
 `;
 
-const Location = ListItemCell.extend``;
-
-const Category = ListItemCell.extend``;
-
-const Date = ListItemCell.extend``;
-
 const Arrow = ListItemCell.extend`
-  text-align: center;
   justify-content: center;
+  text-align: center;
+  transform: ${props => (props.open ? 'rotate(180deg)' : 'none')};
+  transition: all 300ms;
+  svg {
+    path {
+      fill: ${props => (props.open ? color.black : color.darkGrey)};
+    }
+  }
+`;
+
+const ListItemLower = styled.div`
+  display: ${props => (props.open ? 'block' : 'none')};
+  padding: ${spacing.md};
+  height: 100px;
+  border-top: 1px solid ${color.grey};
 `;
