@@ -12,7 +12,7 @@ type Props = {
   unWatchCompany: (arg: number) => void,
   toggleCompany: (arg: number) => void,
   watched: boolean,
-  selected: boolean,
+  open: boolean,
 };
 
 export default class ListItem extends React.Component<Props> {
@@ -36,11 +36,11 @@ export default class ListItem extends React.Component<Props> {
     return moment(this.props.company.reg_date).format('D MMM YYYY');
   };
   render() {
-    const { company } = this.props;
+    const { company, open, watched } = this.props;
     return (
-      <ListItemContainer>
+      <ListItemContainer aria-expanded={open}>
         <ListItemUpper onClick={e => this.props.toggleCompany(e, company.id)}>
-          <StarButton onClick={this.watchHandler} watched={this.props.watched}>
+          <StarButton onClick={this.watchHandler} watched={watched}>
             <FontAwesomeIcon icon={faStar} color={color.yellow} />
           </StarButton>
           <Name>
@@ -55,11 +55,13 @@ export default class ListItem extends React.Component<Props> {
           <ListItemCell>
             <span>{this.datetoString()}</span>
           </ListItemCell>
-          <Arrow open={this.props.selected}>
+          <Arrow open={open}>
             <FontAwesomeIcon icon={faChevronDown} />
           </Arrow>
         </ListItemUpper>
-        <ListItemLower open={this.props.selected}>asdasdasd</ListItemLower>
+        <ListItemLower open={open}>
+          <ListItemLowerContainer>asdasdasdasd</ListItemLowerContainer>
+        </ListItemLower>
       </ListItemContainer>
     );
   }
@@ -135,8 +137,22 @@ const Arrow = ListItemCell.extend`
 `;
 
 const ListItemLower = styled.div`
-  display: ${props => (props.open ? 'block' : 'none')};
-  padding: ${spacing.md};
-  height: 100px;
+  opacity: 0;
+  visibility: hidden;
   border-top: 1px solid ${color.grey};
+  height: 0;
+  overflow: hidden;
+  transition: all 300ms;
+  will-change: height;
+  ${props =>
+    props.open &&
+    `
+    height: 200px;
+    opacity: 1;
+    visibility: visible;
+  `};
+`;
+
+const ListItemLowerContainer = styled.div`
+  padding: ${spacing.md};
 `;

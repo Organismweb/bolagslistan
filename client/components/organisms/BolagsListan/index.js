@@ -18,12 +18,12 @@ type Props = {
 };
 
 type State = {
-  selected?: number,
+  open?: number,
 };
 
 class BolagsListan extends Component<Props, State> {
   state = {
-    selected: null,
+    open: null,
   };
   componentDidMount() {
     // If the companies state is empty, perform a fetch.
@@ -34,12 +34,12 @@ class BolagsListan extends Component<Props, State> {
   // Toggle selected company state.
   toggleCompany = (event, id) => {
     event.stopPropagation();
-    if (this.state.selected === id) {
+    if (this.state.open === id) {
       // If the current id is the same as the clicked id, set state to null.
-      this.setState({ selected: null });
+      this.setState({ open: null });
     } else {
       // If the current id differs from the selected id, set the new id as state.
-      this.setState({ selected: id });
+      this.setState({ open: id });
     }
   };
   renderCompanies = () => {
@@ -53,22 +53,22 @@ class BolagsListan extends Component<Props, State> {
       }
       return companies.map(company => {
         let watched = false;
-        let selected = false;
+        let open = false;
         if (watchings.length) {
           // If this company is found in the watchings state, set watched to true.
           watched = watchings.indexOf(company.id) > -1;
         }
-        if (this.state.selected === company.id) {
+        if (this.state.open === company.id) {
           // If the current selected state is the same as this company id
           // Set selected to true.
-          selected = true;
+          open = true;
         }
         return (
           <ListItem
             key={company.id}
             watched={watched}
             company={company}
-            selected={selected}
+            open={open}
             watchCompany={this.props.watchCompany}
             unWatchCompany={this.props.unWatchCompany}
             toggleCompany={this.toggleCompany}
@@ -79,7 +79,7 @@ class BolagsListan extends Component<Props, State> {
   };
 
   render() {
-    return <List>{this.renderCompanies()}</List>;
+    return <List role="presentation">{this.renderCompanies()}</List>;
   }
 }
 
