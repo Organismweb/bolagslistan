@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { color, spacing, font } from '../../_settings/_variables';
 
@@ -61,6 +61,9 @@ export const Tab = (props: TabProps) => (
 );
 
 const TabContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   border: 1px solid ${color.grey};
 `;
 
@@ -73,6 +76,7 @@ const TabNav = styled.ul`
 `;
 
 const TabItemContainer = styled.li`
+  display: flex;
   flex: 1;
   list-style: none;
   color: black;
@@ -101,6 +105,7 @@ const TabButton = styled.button`
 `;
 
 const TabContent = styled.div`
+  flex: 1;
   padding: ${spacing.lg};
   list-style: none;
 `;

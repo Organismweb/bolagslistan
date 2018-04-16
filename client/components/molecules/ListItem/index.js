@@ -36,6 +36,21 @@ export default class ListItem extends React.Component<Props> {
     });
     return moment(this.props.company.reg_date).format('D MMM YYYY');
   };
+  // If list item is open, render additional content.
+  renderItemContent = activeState => {
+    if (activeState) {
+      return (
+        <ListItemLowerContainer>
+          <TabList defaultActiveTabIndex={0}>
+            <Tab title="Bolagsinformation">Content 1</Tab>
+            <Tab title="Bokslut &amp; nyckeltal">Content 2</Tab>
+            <Tab title="Kontaktinformation">Content 3</Tab>
+            <Tab title="Anteckningar">Content 4</Tab>
+          </TabList>
+        </ListItemLowerContainer>
+      );
+    }
+  };
   render() {
     const { company, open, watched } = this.props;
     return (
@@ -60,16 +75,7 @@ export default class ListItem extends React.Component<Props> {
             <FontAwesomeIcon icon={faChevronDown} />
           </Arrow>
         </ListItemUpper>
-        <ListItemLower open={open}>
-          <ListItemLowerContainer>
-            <TabList defaultActiveTabIndex={0}>
-              <Tab title="Bolagsinformation">Content 1</Tab>
-              <Tab title="Bokslut &amp; nyckeltal">Content 2</Tab>
-              <Tab title="Kontaktinformation">Content 3</Tab>
-              <Tab title="Anteckningar">Content 4</Tab>
-            </TabList>
-          </ListItemLowerContainer>
-        </ListItemLower>
+        <ListItemLower open={open}>{this.renderItemContent(open)}</ListItemLower>
       </ListItemContainer>
     );
   }
@@ -146,6 +152,7 @@ const Arrow = ListItemCell.extend`
 `;
 
 const ListItemLower = styled.div`
+  display: flex;
   opacity: 0;
   visibility: hidden;
   border-top: 1px solid ${color.grey};
@@ -156,12 +163,14 @@ const ListItemLower = styled.div`
   ${props =>
     props.open &&
     `
-    height: 200px;
+    height: 350px;
     opacity: 1;
     visibility: visible;
   `};
 `;
 
 const ListItemLowerContainer = styled.div`
+  display: flex;
+  flex: 1;
   padding: ${spacing.md};
 `;
