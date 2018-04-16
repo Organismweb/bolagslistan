@@ -25,8 +25,8 @@ export const font = {
     main: '"Open Sans", sans-serif',
   },
   size: {
-    xs: '10px',
-    sm: '12px',
+    xs: '12px',
+    sm: '14px',
     md: '16px',
     lg: '32px',
     xl: '72px',

@@ -8,7 +8,7 @@ import { font, spacing } from '../../_settings/_variables';
 const LabelStyle = styled.span`
   display: inline-block;
   background-color: white;
-  font-size: ${font.size.sm};
+  font-size: ${font.size.xs};
   color: #5f6b7a;
   padding-top: calc(${spacing.xs} / 2);
   padding-bottom: calc(${spacing.xs} / 2);

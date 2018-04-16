@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faStar, faChevronDown } from '@fortawesome/fontawesome-pro-solid';
 import moment from 'moment';
+import { TabList, Tab } from '../TabList';
 import { color, spacing, font } from '../../_settings/_variables';
 import { Company } from '../../../types';
 
@@ -50,7 +51,7 @@ export default class ListItem extends React.Component<Props> {
             <span>{company.county_code.toLowerCase()}</span>
           </ListItemCell>
           <ListItemCell>
-            <span>Lorem ipsum kategori</span>
+            <span>{company.category_name}</span>
           </ListItemCell>
           <ListItemCell>
             <span>{this.datetoString()}</span>
@@ -60,7 +61,14 @@ export default class ListItem extends React.Component<Props> {
           </Arrow>
         </ListItemUpper>
         <ListItemLower open={open}>
-          <ListItemLowerContainer>asdasdasdasd</ListItemLowerContainer>
+          <ListItemLowerContainer>
+            <TabList defaultActiveTabIndex={0}>
+              <Tab title="Bolagsinformation">Content 1</Tab>
+              <Tab title="Bokslut &amp; nyckeltal">Content 2</Tab>
+              <Tab title="Kontaktinformation">Content 3</Tab>
+              <Tab title="Anteckningar">Content 4</Tab>
+            </TabList>
+          </ListItemLowerContainer>
         </ListItemLower>
       </ListItemContainer>
     );
@@ -78,6 +86,7 @@ const ListItemContainer = styled.li`
 const ListItemUpper = styled.div`
   display: grid;
   grid-template-columns: 60px 25% 20% 1fr 15% 60px;
+  grid-column-gap: ${spacing.sm};
   height: 60px;
   cursor: pointer;
   + li {
@@ -112,7 +121,7 @@ const ListItemCell = styled.div`
   align-items: center;
   text-transform: capitalize;
   color: #5f6b7a;
-  font-size: 14px;
+  font-size: ${font.size.sm};
 `;
 
 const Name = ListItemCell.extend`
@@ -143,7 +152,7 @@ const ListItemLower = styled.div`
   height: 0;
   overflow: hidden;
   transition: all 300ms;
-  will-change: height;
+  transform: translateZ(0);
   ${props =>
     props.open &&
     `
