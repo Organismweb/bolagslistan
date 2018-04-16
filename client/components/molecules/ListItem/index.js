@@ -1,5 +1,4 @@
 // @flow
-
 import * as React from 'react';
 import styled from 'styled-components';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
@@ -39,10 +38,10 @@ export default class ListItem extends React.Component<Props> {
     return moment(this.props.company.reg_date).format('D MMM YYYY');
   };
   // If list item is open, render additional content.
-  renderItemContent = (activeState: boolean) => {
+  renderItemContent = () => {
     // TODO: When toggling the list item from active state to false
     // Fade out the content smooth.
-    if (activeState) {
+    if (this.props.open) {
       return (
         <ListItemLowerContainer>
           <TabList defaultActiveTabIndex={0}>
@@ -79,7 +78,7 @@ export default class ListItem extends React.Component<Props> {
             <FontAwesomeIcon icon={faChevronDown} />
           </Arrow>
         </ListItemUpper>
-        <ListItemLower open={open}>{this.renderItemContent(open)}</ListItemLower>
+        <ListItemLower open={open}>{this.renderItemContent()}</ListItemLower>
       </ListItemContainer>
     );
   }

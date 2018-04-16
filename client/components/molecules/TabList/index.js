@@ -1,3 +1,4 @@
+// @flow
 import * as React from 'react';
 import styled from 'styled-components';
 import { lighten } from 'polished';
@@ -24,7 +25,7 @@ export class TabList extends React.Component<Props, State> {
   renderTabNavElements = () =>
     React.Children.map(this.props.children, (element, index) =>
       React.cloneElement(element, {
-        onClick: this.handleTabClick(index),
+        onClick: this.handleTabClick,
         tabIndex: index,
         isActive: index === this.state.activeTabIndex,
       })
@@ -32,7 +33,9 @@ export class TabList extends React.Component<Props, State> {
   renderActiveTabContent = () => {
     const { children } = this.props;
     const { activeTabIndex } = this.state;
+    // $FlowFixMe
     if (this.props.children[activeTabIndex]) {
+      // $FlowFixMe
       return children[activeTabIndex].props.children;
     }
   };
@@ -55,6 +58,7 @@ type TabProps = {
 
 export const Tab = (props: TabProps) => (
   <TabItemContainer>
+    {/* $FlowFixMe */}
     <TabButton active={props.isActive} onClick={() => props.onClick(props.tabIndex)}>
       {props.title}
     </TabButton>
@@ -64,7 +68,7 @@ export const Tab = (props: TabProps) => (
 Tab.defaultProps = {
   tabIndex: null,
   isActive: null,
-  onClick: null,
+  onClick: () => {},
 };
 
 const TabContainer = styled.div`

@@ -1,4 +1,5 @@
 // @flow
+
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
@@ -19,12 +20,12 @@ type Props = {
 };
 
 type State = {
-  open: ?number,
+  currentListId: ?number,
 };
 
 class BolagsListan extends Component<Props, State> {
   state = {
-    open: null,
+    currentListId: null,
   };
   componentDidMount() {
     // If the companies state is empty, perform a fetch.
@@ -35,12 +36,12 @@ class BolagsListan extends Component<Props, State> {
   // Toggle selected company state.
   toggleCompany = (event, id) => {
     event.stopPropagation();
-    if (this.state.open === id) {
+    if (this.state.currentListId === id) {
       // If the current id is the same as the clicked id, set state to null.
-      this.setState({ open: null });
+      this.setState({ currentListId: null });
     } else {
       // If the current id differs from the selected id, set the new id as state.
-      this.setState({ open: id });
+      this.setState({ currentListId: id });
     }
   };
   renderCompanies = () => {
@@ -59,7 +60,7 @@ class BolagsListan extends Component<Props, State> {
           // If this company is found in the watchings state, set watched to true.
           watched = watchings.indexOf(company.id) > -1;
         }
-        if (this.state.open === company.id) {
+        if (this.state.currentListId === company.id) {
           // If the current selected state is the same as this company id
           // Set selected to true.
           open = true;
