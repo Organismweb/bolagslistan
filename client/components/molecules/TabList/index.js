@@ -17,7 +17,7 @@ export class TabList extends Component<Props, State> {
   };
   handleTabClick = index => {
     this.setState({
-      activeTabIndex: index === this.state.activeTabIndex ? this.props.defaultActiveTabIndex : index,
+      activeTabIndex: index,
     });
   };
   renderTabNavElements = () =>
