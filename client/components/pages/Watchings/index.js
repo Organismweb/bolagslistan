@@ -4,7 +4,7 @@ import BolagsListan from '../../organisms/BolagsListan';
 
 const Watchings = () => (
   <React.Fragment>
-    <BolagsListan renderOnlyWatched="true" />
+    <BolagsListan renderOnlyWatched />
   </React.Fragment>
 );
 

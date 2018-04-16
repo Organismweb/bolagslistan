@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
@@ -11,14 +12,14 @@ import ListItem from '../../molecules/ListItem';
 type Props = {
   companies: [Company],
   watchings: [number],
-  renderOnlyWatched: boolean,
+  renderOnlyWatched?: boolean,
   watchCompany: () => void,
   unWatchCompany: () => void,
   fetchCompanies: () => void,
 };
 
 type State = {
-  open?: number,
+  open: ?number,
 };
 
 class BolagsListan extends Component<Props, State> {

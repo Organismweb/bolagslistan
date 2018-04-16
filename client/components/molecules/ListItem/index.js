@@ -1,3 +1,5 @@
+// @flow
+
 import * as React from 'react';
 import styled from 'styled-components';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
@@ -5,20 +7,20 @@ import { faStar, faChevronDown } from '@fortawesome/fontawesome-pro-solid';
 import moment from 'moment';
 import { TabList, Tab } from '../TabList';
 import { color, spacing, font } from '../../_settings/_variables';
-import { Company } from '../../../types';
+import type { Company } from '../../../types';
 
 type Props = {
   company: Company,
   watchCompany: (arg: number) => void,
   unWatchCompany: (arg: number) => void,
-  toggleCompany: (arg: number) => void,
+  toggleCompany: (e: Event, arg: number) => void,
   watched: boolean,
   open: boolean,
 };
 
 export default class ListItem extends React.Component<Props> {
   // This returns the correct method to the star button.
-  watchHandler = e => {
+  watchHandler = (e: Event) => {
     e.stopPropagation();
     const { company } = this.props;
     // If the company is watched, return the unwatch method.
@@ -37,7 +39,9 @@ export default class ListItem extends React.Component<Props> {
     return moment(this.props.company.reg_date).format('D MMM YYYY');
   };
   // If list item is open, render additional content.
-  renderItemContent = activeState => {
+  renderItemContent = (activeState: boolean) => {
+    // TODO: When toggling the list item from active state to false
+    // Fade out the content smooth.
     if (activeState) {
       return (
         <ListItemLowerContainer>

@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
+import { lighten } from 'polished';
 import { color, spacing, font } from '../../_settings/_variables';
 
 type Props = {
-  children: React.Element,
+  children: React.Node,
   defaultActiveTabIndex: number,
 };
 
@@ -11,11 +12,11 @@ type State = {
   activeTabIndex: number,
 };
 
-export class TabList extends Component<Props, State> {
+export class TabList extends React.Component<Props, State> {
   state = {
     activeTabIndex: this.props.defaultActiveTabIndex,
   };
-  handleTabClick = index => {
+  handleTabClick = (index: number) => {
     this.setState({
       activeTabIndex: index,
     });
@@ -23,7 +24,7 @@ export class TabList extends Component<Props, State> {
   renderTabNavElements = () =>
     React.Children.map(this.props.children, (element, index) =>
       React.cloneElement(element, {
-        onClick: this.handleTabClick,
+        onClick: this.handleTabClick(index),
         tabIndex: index,
         isActive: index === this.state.activeTabIndex,
       })
@@ -31,7 +32,7 @@ export class TabList extends Component<Props, State> {
   renderActiveTabContent = () => {
     const { children } = this.props;
     const { activeTabIndex } = this.state;
-    if (children[activeTabIndex]) {
+    if (this.props.children[activeTabIndex]) {
       return children[activeTabIndex].props.children;
     }
   };
@@ -47,9 +48,9 @@ export class TabList extends Component<Props, State> {
 
 type TabProps = {
   title: string,
-  tabIndex: number,
-  isActive: boolean,
-  onClick: () => void,
+  tabIndex?: ?number,
+  isActive?: ?boolean,
+  onClick?: (arg: ?number) => void,
 };
 
 export const Tab = (props: TabProps) => (
@@ -59,6 +60,12 @@ export const Tab = (props: TabProps) => (
     </TabButton>
   </TabItemContainer>
 );
+
+Tab.defaultProps = {
+  tabIndex: null,
+  isActive: null,
+  onClick: null,
+};
 
 const TabContainer = styled.div`
   display: flex;
@@ -95,6 +102,10 @@ const TabButton = styled.button`
   appearance: none;
   outline: 0;
   cursor: pointer;
+  transition: all 300ms;
+  &:hover {
+    background-color: ${lighten(0.03, color.lightGrey)};
+  }
   ${props =>
     props.active &&
     `
