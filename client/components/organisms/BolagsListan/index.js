@@ -1,5 +1,4 @@
 // @flow
-
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
@@ -20,12 +19,12 @@ type Props = {
 };
 
 type State = {
-  currentListId: ?number,
+  selectedListItem: ?number,
 };
 
 class BolagsListan extends Component<Props, State> {
   state = {
-    currentListId: null,
+    selectedListItem: null,
   };
   componentDidMount() {
     // If the companies state is empty, perform a fetch.
@@ -33,55 +32,40 @@ class BolagsListan extends Component<Props, State> {
       this.props.fetchCompanies();
     }
   }
+  // Returns a filtered array with only watched companies.
+  filterCompanies = (companies = []) => companies.filter(company => this.props.watchings.indexOf(company.id) > -1);
   // Toggle selected company state.
   toggleCompany = (event, id) => {
     event.stopPropagation();
-    if (this.state.currentListId === id) {
-      // If the current id is the same as the clicked id, set state to null.
-      this.setState({ currentListId: null });
-    } else {
-      // If the current id differs from the selected id, set the new id as state.
-      this.setState({ currentListId: id });
-    }
+    this.state.selectedListItem === id
+      ? this.setState({ selectedListItem: null })
+      : this.setState({ selectedListItem: id });
   };
-  renderCompanies = () => {
-    let { companies } = this.props;
-    const { watchings } = this.props;
-    if (companies.length) {
-      // If this component has the prop renderOnlyWatched set to true, filter the companies
-      // before looping through them.
-      if (this.props.renderOnlyWatched) {
-        companies = companies.filter(company => watchings.indexOf(company.id) > -1);
-      }
-      return companies.map(company => {
-        let watched = false;
-        let open = false;
-        if (watchings.length) {
-          // If this company is found in the watchings state, set watched to true.
-          watched = watchings.indexOf(company.id) > -1;
-        }
-        if (this.state.currentListId === company.id) {
-          // If the current selected state is the same as this company id
-          // Set selected to true.
-          open = true;
-        }
-        return (
-          <ListItem
-            key={company.id}
-            watched={watched}
-            company={company}
-            open={open}
-            watchCompany={this.props.watchCompany}
-            unWatchCompany={this.props.unWatchCompany}
-            toggleCompany={this.toggleCompany}
-          />
-        );
-      });
-    }
-  };
-
   render() {
-    return <List role="presentation">{this.renderCompanies()}</List>;
+    let { companies } = this.props;
+    if (companies.length) {
+      if (this.props.renderOnlyWatched) {
+        companies = this.filterCompanies(companies);
+      }
+      return (
+        <List role="presentation">
+          {companies.map((company, index) => (
+            <ListItem
+              key={company.id}
+              index={index}
+              watched={this.props.watchings.indexOf(company.id) > -1}
+              company={company}
+              open={this.state.selectedListItem === company.id}
+              watchCompany={this.props.watchCompany}
+              unWatchCompany={this.props.unWatchCompany}
+              toggleCompany={this.toggleCompany}
+            />
+          ))}
+        </List>
+      );
+    }
+    // Todo make loader component.
+    return 'Loading..';
   }
 }
 

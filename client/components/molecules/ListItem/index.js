@@ -1,9 +1,10 @@
 // @flow
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faStar, faChevronDown } from '@fortawesome/fontawesome-pro-solid';
 import moment from 'moment';
+import { timingFunctions } from 'polished';
 import { TabList, Tab } from '../TabList';
 import { color, spacing, font } from '../../_settings/_variables';
 import type { Company } from '../../../types';
@@ -15,6 +16,7 @@ type Props = {
   toggleCompany: (e: Event, arg: number) => void,
   watched: boolean,
   open: boolean,
+  index: number,
 };
 
 export default class ListItem extends React.Component<Props> {
@@ -55,9 +57,10 @@ export default class ListItem extends React.Component<Props> {
     }
   };
   render() {
-    const { company, open, watched } = this.props;
+    const { company, open, watched, index } = this.props;
+
     return (
-      <ListItemContainer aria-expanded={open}>
+      <ListItemContainer delay={index} aria-expanded={open}>
         <ListItemUpper onClick={e => this.props.toggleCompany(e, company.id)}>
           <StarButton onClick={this.watchHandler} watched={watched}>
             <FontAwesomeIcon icon={faStar} color={color.yellow} />
@@ -84,12 +87,25 @@ export default class ListItem extends React.Component<Props> {
   }
 }
 
-const ListItemContainer = styled.li`
+const listAnimation = keyframes`
+  to {
+    opacity: 1;
+    transform: none;
+  }
+`;
+
+const ListItemContainer = styled.li.attrs({
+  style: props => ({
+    animation: `${listAnimation} 300ms ${timingFunctions('easeInOutQuad')} ${props.delay * 30}ms forwards`,
+  }),
+})`
   list-style: none;
   margin-bottom: 15px;
   background-color: ${color.white};
   border: 1px solid ${color.grey};
   box-shadow: 0 2px 4px 0 rgba(31, 46, 61, 0.06);
+  opacity: 0;
+  transform: translateX(-40px);
 `;
 
 const ListItemUpper = styled.div`
