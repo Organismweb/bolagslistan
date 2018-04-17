@@ -1,4 +1,4 @@
-import { COMPANIES_FETCH, COMPANIES_FETCH_ERROR, BASE_URL } from '../constants';
+import { COMPANIES_FETCH, ADD_ERROR, RESET_ERRORS, BASE_URL } from '../constants';
 import { API_KEY } from '../credentials';
 import fetchErrorHandler from '../utils/fetchErrorHandler';
 
@@ -15,11 +15,14 @@ const fetchCompanies = () => dispatch => {
         type: COMPANIES_FETCH,
         payload,
       });
+      dispatch({
+        type: RESET_ERRORS,
+      });
     })
     .catch(error => {
       dispatch({
-        type: COMPANIES_FETCH_ERROR,
-        payload: error,
+        type: ADD_ERROR,
+        error,
       });
     });
 };

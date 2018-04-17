@@ -46,7 +46,11 @@ class BolagsListan extends Component<Props, State> {
     let { companies } = this.props;
     if (companies.length) {
       if (this.props.renderOnlyWatched) {
-        companies = this.filterCompanies(companies);
+        if (this.props.watchings.length) {
+          companies = this.filterCompanies(companies);
+        } else {
+          return <h1>Du har inga aktiva bevakningar.</h1>;
+        }
       }
       return (
         <List role="presentation">
