@@ -8,6 +8,7 @@ import fetchCompanies from '../../../actions/fetchCompanies';
 import { watchCompany, unWatchCompany } from '../../../actions/watchCompany';
 import type { Company } from '../../../types';
 import ListItem from '../../molecules/ListItem';
+import Spinner from '../../atoms/Spinner';
 
 type Props = {
   companies: [Company],
@@ -65,7 +66,7 @@ class BolagsListan extends Component<Props, State> {
       );
     }
     // Todo make loader component.
-    return 'Loading..';
+    return <Spinner />;
   }
 }
 

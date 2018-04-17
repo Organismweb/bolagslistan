@@ -3,9 +3,7 @@ import { API_KEY } from '../credentials';
 import fetchErrorHandler from '../utils/fetchErrorHandler';
 
 const headers = new Headers();
-
 headers.append('X-API-KEY', API_KEY);
-
 const fetchCompanies = () => dispatch => {
   fetch(`${BASE_URL}/companies`, {
     headers,
