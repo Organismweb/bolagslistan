@@ -1,7 +1,9 @@
-import { COMPANY_WATCH, COMPANY_UNWATCH } from '../constants';
+import { COMPANY_WATCH, COMPANY_UNWATCH, WATCHINGS_FETCH } from '../constants';
 
 export default (state = [], action) => {
   switch (action.type) {
+    case WATCHINGS_FETCH:
+      return [...action.payload];
     case COMPANY_WATCH:
       return [...state, action.id];
     case COMPANY_UNWATCH: {

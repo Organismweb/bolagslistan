@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import type { Dispatch } from 'redux';
-import fetchCompanies from '../../../actions/fetchCompanies';
+import { fetchCompanies } from '../../../actions/fetchCompanies';
 import { watchCompany, unWatchCompany } from '../../../actions/watchCompany';
 import type { Company } from '../../../types';
 import ListItem from '../../molecules/ListItem';
@@ -30,6 +30,7 @@ class BolagsListan extends Component<Props, State> {
   componentDidMount() {
     // If the companies state is empty, perform a fetch.
     if (!this.props.companies.length) {
+      // this.props.fetchWatchings();
       this.props.fetchCompanies();
     }
   }

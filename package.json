@@ -29,6 +29,7 @@
     "@fortawesome/fontawesome-pro-light": "^5.0.9",
     "@fortawesome/fontawesome-pro-solid": "^5.0.9",
     "@fortawesome/react-fontawesome": "^0.0.18",
+    "axios": "^0.18.0",
     "base-64": "^0.1.0",
     "lodash": "^4.17.5",
     "moment": "^2.22.0",
