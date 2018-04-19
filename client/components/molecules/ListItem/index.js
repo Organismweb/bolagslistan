@@ -19,18 +19,7 @@ type Props = {
   index: number,
 };
 
-export default class ListItem extends React.Component<Props> {
-  // Optimization so that all the list items doesnt re render when
-  // The current item interacted with recieves new props.
-  shouldComponentUpdate(nextProps: Props, nextState: any) {
-    if (this.props.open !== nextProps.open) {
-      return true;
-    }
-    if (this.props.watched !== nextProps.watched) {
-      return true;
-    }
-    return false;
-  }
+export default class ListItem extends React.PureComponent<Props> {
   // This returns the correct method to the star button.
   watchHandler = (e: Event) => {
     e.stopPropagation();
