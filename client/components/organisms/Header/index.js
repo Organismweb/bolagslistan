@@ -4,7 +4,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import { faEye, faBell } from '@fortawesome/fontawesome-pro-solid';
+import { faBell } from '@fortawesome/fontawesome-pro-solid';
 import { color, spacing } from '../../_settings/_variables';
 import Logo from '../../atoms/Logo';
 import IconNotification from '../../atoms/IconNotification';
