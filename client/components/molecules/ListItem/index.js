@@ -23,13 +23,8 @@ export default class ListItem extends React.PureComponent<Props> {
   // This returns the correct method to the star button.
   watchHandler = (e: Event) => {
     e.stopPropagation();
-    const { company } = this.props;
-    // If the company is watched, return the unwatch method.
-    // If not watched return the watch method.
-    if (this.props.watched) {
-      return this.props.unWatchCompany(company.id);
-    }
-    return this.props.watchCompany(company.id);
+    const { company: { id } } = this.props;
+    this.props.watched ? this.props.unWatchCompany(id) : this.props.watchCompany(id);
   };
   // If list item is open, render additional content.
   renderItemContent = () => {
