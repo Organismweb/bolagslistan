@@ -45,7 +45,7 @@ export default class ListItem extends React.PureComponent<Props> {
   };
   render() {
     const { company, open, watched, index } = this.props;
-
+    dateToLocalString('asfasdfasdf');
     return (
       <ListItemContainer delay={index} aria-expanded={open}>
         <ListItemUpper onClick={e => this.props.toggleCompany(e, company.id)}>
