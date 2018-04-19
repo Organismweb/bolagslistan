@@ -1,5 +1,5 @@
 // API
-export const BASE_URL = 'https://cors-anywhere.herokuapp.com/dev.bolagslistan.nu/api';
+export const BASE_URL = 'https://dev.bolagslistan.nu/api';
 
 // Actions
 export const COMPANIES_FETCH = 'COMPANIES_FETCH';
