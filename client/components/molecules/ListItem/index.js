@@ -4,7 +4,7 @@ import styled, { keyframes } from 'styled-components';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faStar, faChevronDown } from '@fortawesome/fontawesome-pro-solid';
 import { timingFunctions } from 'polished';
-import DateToLocalString from '../../../utils/dateToLocalString';
+import dateToLocalString from '../../../utils/dateToLocalString/';
 import { TabList, Tab } from '../TabList';
 import { color, spacing, font } from '../../_settings/_variables';
 import type { Company } from '../../../types';
@@ -29,7 +29,7 @@ export default class ListItem extends React.PureComponent<Props> {
   // If list item is open, render additional content.
   renderItemContent = () => {
     // TODO: When toggling the list item from active state to false
-    // Fade out the content smooth.
+    // Fade out the content smooth, now its just a flash due to the instant unmounting of the TabList conditional rendering.
     if (this.props.open) {
       return (
         <ListItemLowerContainer>
@@ -62,7 +62,7 @@ export default class ListItem extends React.PureComponent<Props> {
             <span>{company.category_name}</span>
           </ListItemCell>
           <ListItemCell>
-            <span>{DateToLocalString(company.reg_date)}</span>
+            <span>{dateToLocalString(company.reg_date)}</span>
           </ListItemCell>
           <Arrow open={open}>
             <FontAwesomeIcon icon={faChevronDown} />
