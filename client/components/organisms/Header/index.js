@@ -16,11 +16,6 @@ const Header = () => (
     </Link>
     <ToolBar>
       <ToolItem>
-        <IconNotification>
-          <FontAwesomeIcon icon={faEye} color={color.darkPurple} size="lg" />
-        </IconNotification>
-      </ToolItem>
-      <ToolItem>
         <IconNotification notifications={3}>
           <FontAwesomeIcon icon={faBell} color={color.darkPurple} size="lg" />
         </IconNotification>
