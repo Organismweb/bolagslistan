@@ -3,8 +3,8 @@ import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faStar, faChevronDown } from '@fortawesome/fontawesome-pro-solid';
-import moment from 'moment';
 import { timingFunctions } from 'polished';
+import DateToLocalString from '../../../utils/dateToLocalString';
 import { TabList, Tab } from '../TabList';
 import { color, spacing, font } from '../../_settings/_variables';
 import type { Company } from '../../../types';
@@ -42,14 +42,6 @@ export default class ListItem extends React.Component<Props> {
     }
     return this.props.watchCompany(company.id);
   };
-  // Format the date string to local string.
-  datetoString = () => {
-    moment.locale('sv');
-    moment.updateLocale('sv', {
-      monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
-    });
-    return moment(this.props.company.reg_date).format('D MMM YYYY');
-  };
   // If list item is open, render additional content.
   renderItemContent = () => {
     // TODO: When toggling the list item from active state to false
@@ -86,7 +78,7 @@ export default class ListItem extends React.Component<Props> {
             <span>{company.category_name}</span>
           </ListItemCell>
           <ListItemCell>
-            <span>{this.datetoString()}</span>
+            <span>{DateToLocalString(company.reg_date)}</span>
           </ListItemCell>
           <Arrow open={open}>
             <FontAwesomeIcon icon={faChevronDown} />
