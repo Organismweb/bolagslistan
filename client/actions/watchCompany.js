@@ -2,22 +2,19 @@ import axios from 'axios';
 import { COMPANY_WATCH, COMPANY_UNWATCH, BASE_URL, ADD_ERROR } from '../constants';
 import { API_KEY } from '../credentials';
 
+const watchingsUrl = `${BASE_URL}/watchings`;
 const config = {
   headers: {
-    'X-API-KEY': API_KEY,
-    "Accept": "application/json",
-    "Content-Type": "text/plain"
-  }
+    'x-api-key': API_KEY,
+    accept: 'application/json',
+    'content-type': 'application/json',
+  },
 };
 
 export const watchCompany = id => dispatch => {
   // Post the new watching to the server.
   axios
-    .post(`${BASE_URL}/watchings`, {
-      data: {
-        company_id: id
-      }
-    }, config )
+    .post(watchingsUrl, { company_id: id }, config)
     .then(response => {
       console.log(response);
       // Dispatch new watching to state.
@@ -42,12 +39,7 @@ export const unWatchCompany = id => dispatch => {
   });
   // Post the new watching to the server.
   axios
-    .delete(`${BASE_URL}/watchings`, {
-      headers,
-      data: {
-        company_id: id,
-      },
-    })
+    .delete(watchingsUrl, { company_id: id }, config)
     .then(response => {
       console.log(response);
     })

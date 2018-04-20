@@ -35,7 +35,6 @@ export default class ListItem extends React.PureComponent<Props> {
         <ListItemLowerContainer>
           <TabList defaultActiveTabIndex={0}>
             <Tab title="Bolagsinformation">Content 1</Tab>
-            <Tab title="Bokslut &amp; nyckeltal">Content 2</Tab>
             <Tab title="Kontaktinformation">Content 3</Tab>
             <Tab title="Anteckningar">Content 4</Tab>
           </TabList>
@@ -45,7 +44,6 @@ export default class ListItem extends React.PureComponent<Props> {
   };
   render() {
     const { company, open, watched, index } = this.props;
-    dateToLocalString('asfasdfasdf');
     return (
       <ListItemContainer delay={index} aria-expanded={open}>
         <ListItemUpper onClick={e => this.props.toggleCompany(e, company.id)}>
